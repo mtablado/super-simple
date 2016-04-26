@@ -16,7 +16,8 @@ import com.mt.jpmorgan.facade.stock.StockFacade;
 import com.mt.jpmorgan.types.StockSymbol;
 import com.mt.jpmorgan.types.TradeType;
 
-@RestController("/trade")
+@RestController
+@RequestMapping("/trade/**")
 public class TradeController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(StockController.class);

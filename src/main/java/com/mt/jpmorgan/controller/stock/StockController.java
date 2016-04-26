@@ -5,13 +5,12 @@ package com.mt.jpmorgan.controller.stock;
 
 import java.math.BigDecimal;
 
-import org.hibernate.validator.constraints.NotEmpty;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +21,8 @@ import com.mt.jpmorgan.types.StockSymbol;
  * @author miguel.tablado.leon
  *
  */
-@RestController("/Stock")
+@RestController
+@RequestMapping("/stock/**")
 public class StockController {
 
 	private static final Logger LOG = LoggerFactory.getLogger(StockController.class);
@@ -30,19 +30,19 @@ public class StockController {
 	@Autowired
 	private StockFacade stockFacade;
 
-	@RequestMapping("/calculate-dividend-yield")
+	@RequestMapping("/calculate-dividend-yield/{id}")
 	@ResponseBody
 	public BigDecimal calculateDivedendYield(
-			@RequestParam(name = "id", required = true) @NotEmpty StockSymbol stockSymbol) {
+			@PathVariable("id") StockSymbol stockSymbol) {
 
 		LOG.info("Calculate Dividend Yield request received for stock id: " + stockSymbol);
 		return this.stockFacade.calculateDividendYield(stockSymbol);
 	}
 
-	@RequestMapping(value = "/price-earning-ratio", method = RequestMethod.GET)
+	@RequestMapping(value = "/price-earning-ratio/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public String priceEarningRatio(
-			@RequestParam(name = "id", required = true) @NotEmpty StockSymbol stockSymbol) {
+			@PathVariable("id") StockSymbol stockSymbol) {
 
 		LOG.info("Calculate PE ratio request received for stock id: " + stockSymbol);
 		BigDecimal per = this.stockFacade.calculatePERatio(stockSymbol);
@@ -50,10 +50,10 @@ public class StockController {
 		return per.toString();
 	}
 
-	@RequestMapping(value = "/ticker-price", method = RequestMethod.GET)
+	@RequestMapping(value = "/ticker-price/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public String calculateTickerPrice(
-			@RequestParam(name = "id", required = true) @NotEmpty StockSymbol stockSymbol) {
+			@PathVariable("id") StockSymbol stockSymbol) {
 
 		LOG.info("Calculate ticker price request received for stock id: " + stockSymbol);
 		BigDecimal tickerPrice = this.stockFacade.calculateTickerPrice(stockSymbol);
@@ -62,10 +62,10 @@ public class StockController {
 
 	}
 
-	@RequestMapping(value = "/stock-price", method = RequestMethod.GET)
+	@RequestMapping(value = "/stock-price/{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public String calculateStockPrice(
-			@RequestParam(name = "id", required = true) @NotEmpty StockSymbol stockSymbol) {
+			@PathVariable("id") StockSymbol stockSymbol) {
 
 		LOG.info("Calculate stock price request received for stock id: " + stockSymbol);
 		BigDecimal stockPrice = this.stockFacade.calculateStockPrice(stockSymbol);
