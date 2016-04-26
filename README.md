@@ -22,12 +22,12 @@ Once the maven process is finished, you could execute the application running:
 The folling table lists the available REST Services
 | Path                      | Description                                           | Type | Paramters                                  |
 |---------------------------|-------------------------------------------------------|------|---------------------------------------------------|
-| /calculate-dividend-yield | Calculates the dividend yiel for a given stock        | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
-| /price-earning-ratio      | Calculates the P/E ratio for a given stock            | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
-| /ticker-price             | Calculates the ticker price (15min) for a given stock | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
-| /stock-price              | Calculates the stock price for a given stock          | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
-| /gbce                     | Calculates the GBCE All Share Index                   | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
-| /buy-stocks               | Calculates the GBCE All Share Index                   | POST | id=[ALE, GIN, POP, JOE, TEA], price, quantity |
-| /sell-stocks              | Calculates the GBCE All Share Index                   | POST | id=[ALE, GIN, POP, JOE, TEA], price, quantity |
+| /stock/calculate-dividend-yield/{id} | Calculates the dividend yiel for a given stock        | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
+| /stock/price-earning-ratio/{id}      | Calculates the P/E ratio for a given stock            | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
+| /stock/ticker-price/{id}             | Calculates the ticker price (15min) for a given stock | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
+| /stock/stock-price/{id}              | Calculates the stock price for a given stock          | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
+| /stock/gbce                          | Calculates the GBCE All Share Index                   | GET  | id=[ALE, GIN, POP, JOE, TEA]                  |
+| /trade/buy-stocks                    | Calculates the GBCE All Share Index                   | POST | id=[ALE, GIN, POP, JOE, TEA], price, quantity |
+| /trade/sell-stocks                   | Calculates the GBCE All Share Index                   | POST | id=[ALE, GIN, POP, JOE, TEA], price, quantity |
 
 
